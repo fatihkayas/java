@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snake-game
+  labels:
+    app: snake-game
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snake-game
+  template:
+    metadata:
+      labels:
+        app: snake-game
+    spec:
+      containers:
+        - name: snake-game
+          image: fatihyasar/snake_game:v7  # Replace with your Docker image
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DISPLAY
+              value: ":0"  # You might need this if you're using graphical libraries
